@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 import '../cubits/base_state.dart';
@@ -48,17 +49,12 @@ class _PostsScreenState extends State<PostsScreen> {
         }
         if (state is SuccessState<List<Post>>) {
           return RefreshIndicator(
-            onRefresh: () => _postsCubit.fetch(),
-            child: ListView.separated(
-              itemCount: state.data.length,
-              separatorBuilder: (context, index) => 4.emptyHeight,
-              padding: EdgeInsets.symmetric(
-                vertical: 16.height,
-                horizontal: 16.width,
-              ),
-              itemBuilder: (context, index) {
-                final post = state.data[index];
-                return Card(
+            onRefresh: _postsCubit.fetch,
+            child: PagedListView<int, Post>(
+              padding: EdgeInsets.symmetric(horizontal: 16.width),
+              pagingController: _postsCubit.controller,
+              builderDelegate: PagedChildBuilderDelegate(
+                itemBuilder: (context, item, index) => Card(
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       vertical: 16.height,
@@ -66,8 +62,8 @@ class _PostsScreenState extends State<PostsScreen> {
                     ),
                     child: Column(children: [
                       _OwnerWidget(
-                        owner: post.owner,
-                        publishDate: post.publishDate,
+                        owner: item.owner,
+                        publishDate: item.publishDate,
                       ),
                       Row(children: [
                         Expanded(
@@ -75,17 +71,17 @@ class _PostsScreenState extends State<PostsScreen> {
                             borderRadius: 8.borderRadius,
                             child: AspectRatio(
                               aspectRatio: 1 / 1.2,
-                              child: post.image.cachedNetworkImage(),
+                              child: item.image.cachedNetworkImage(),
                             ),
                           ),
                         ),
                         16.emptyWidth,
-                        Expanded(child: _Content(post: post)),
+                        Expanded(child: _Content(post: item)),
                       ]),
                     ]),
                   ),
-                );
-              },
+                ),
+              ),
             ),
           );
         }
@@ -106,8 +102,6 @@ class _Content extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(timeago.format(post.publishDate)),
-        8.emptyHeight,
         Text(post.text),
         4.emptyHeight,
         Wrap(
