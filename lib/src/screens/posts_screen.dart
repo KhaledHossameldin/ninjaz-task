@@ -47,43 +47,46 @@ class _PostsScreenState extends State<PostsScreen> {
           );
         }
         if (state is SuccessState<List<Post>>) {
-          return ListView.separated(
-            itemCount: state.data.length,
-            separatorBuilder: (context, index) => 4.emptyHeight,
-            padding: EdgeInsets.symmetric(
-              vertical: 16.height,
-              horizontal: 16.width,
-            ),
-            itemBuilder: (context, index) {
-              final post = state.data[index];
-              return Card(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 16.height,
-                    horizontal: 16.width,
-                  ),
-                  child: Column(children: [
-                    _OwnerWidget(
-                      owner: post.owner,
-                      publishDate: post.publishDate,
+          return RefreshIndicator(
+            onRefresh: () => _postsCubit.fetch(),
+            child: ListView.separated(
+              itemCount: state.data.length,
+              separatorBuilder: (context, index) => 4.emptyHeight,
+              padding: EdgeInsets.symmetric(
+                vertical: 16.height,
+                horizontal: 16.width,
+              ),
+              itemBuilder: (context, index) {
+                final post = state.data[index];
+                return Card(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 16.height,
+                      horizontal: 16.width,
                     ),
-                    Row(children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: 8.borderRadius,
-                          child: AspectRatio(
-                            aspectRatio: 1 / 1.2,
-                            child: post.image.cachedNetworkImage(),
+                    child: Column(children: [
+                      _OwnerWidget(
+                        owner: post.owner,
+                        publishDate: post.publishDate,
+                      ),
+                      Row(children: [
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: 8.borderRadius,
+                            child: AspectRatio(
+                              aspectRatio: 1 / 1.2,
+                              child: post.image.cachedNetworkImage(),
+                            ),
                           ),
                         ),
-                      ),
-                      16.emptyWidth,
-                      Expanded(child: _Content(post: post)),
+                        16.emptyWidth,
+                        Expanded(child: _Content(post: post)),
+                      ]),
                     ]),
-                  ]),
-                ),
-              );
-            },
+                  ),
+                );
+              },
+            ),
           );
         }
         return const Material();
