@@ -1,0 +1,48 @@
+name: Flutter Build and Notify (on Release)
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build_and_notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: use Flutter action
+        uses: google/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build APK
+        run: flutter build appbundle --release
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+
+      - name: Send email notification
+        uses: jamesruan/action-send-mail@v2
+        if: always()
+        with:
+          server: smtp.office365.com
+          port: 587
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          from: "GitHub Actions <khaled-hossam@outlook.com>"
+          to: "khaled.hossameldin@gmail.com"
+          subject: "Flutter Release Build Status"
+          body: |
+            The build for release ${{ github.ref }} is complete.
+
+            **Build Status:** ${{ job.status }}
+
+            **Download APK (if uploaded):** ${{ steps.upload_apk.outputs.upload_url }}
