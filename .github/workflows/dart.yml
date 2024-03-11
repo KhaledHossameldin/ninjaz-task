@@ -42,7 +42,7 @@ jobs:
         run: dart test
 
       - name: Send email notification
-        uses: jamesruan/action-send-mail@v2
+        uses: dawidd6/action-send-mail@v3
         if: always()
         with:
           server: smtp.office365.com
