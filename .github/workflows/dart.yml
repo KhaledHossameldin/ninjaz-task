@@ -41,11 +41,11 @@ jobs:
       - name: Send email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp-mail.outlook.com
+          server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           from: "Khaled Hossameldin"
           subject: "Flutter Build Complete"
-          to: "khaled.hossameldin99@gmail.com"
+          to: "khaled-hossam@outlook.com"
           body: "The Flutter build is complete for release ${{ github.event.release.tag_name }}."
