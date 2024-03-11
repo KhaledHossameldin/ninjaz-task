@@ -81,7 +81,7 @@ class Post extends _Post with RealmEntity, RealmObjectBase, RealmObject {
   static SchemaObject _initSchema() {
     RealmObjectBase.registerFactory(Post._);
     return const SchemaObject(ObjectType.realmObject, Post, 'Post', [
-      SchemaProperty('id', RealmPropertyType.string),
+      SchemaProperty('id', RealmPropertyType.string, primaryKey: true),
       SchemaProperty('image', RealmPropertyType.string),
       SchemaProperty('likes', RealmPropertyType.int),
       SchemaProperty('tags', RealmPropertyType.string,

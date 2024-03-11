@@ -7,8 +7,8 @@ mixin Pagination<T> {
   int page = 1;
   int limit = 20;
 
-  void appendPage({required List<T> items}) {
-    if (items.length < limit) {
+  void appendPage({required List<T> items, bool isOffline = false}) {
+    if (items.length < limit || isOffline) {
       controller.appendLastPage(items);
       return;
     }

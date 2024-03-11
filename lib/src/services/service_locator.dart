@@ -5,6 +5,7 @@ import '../../routes/routes.dart';
 import '../cubits/posts_cubit.dart';
 import 'network/network_service.dart';
 import '../themes/app_theme.dart';
+import 'realm_service.dart';
 
 class ServiceLocator {
   const ServiceLocator._();
@@ -15,6 +16,7 @@ class ServiceLocator {
     _getIt.registerSingleton<AppTheme>(AppTheme());
     _getIt.registerSingleton<Routes>(Routes());
     _getIt.registerSingleton<AppRouter>(AppRouter());
+    _getIt.registerSingleton<RealmService>(RealmService());
     _getIt.registerSingleton<NetworkService>(NetworkService());
     _getIt.registerSingleton<PostsCubit>(PostsCubit());
   }

@@ -4,6 +4,7 @@ part 'post.g.dart';
 
 @RealmModel()
 class _Post {
+  @PrimaryKey()
   late String id;
   late String image;
   late int likes;
