@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:ninjaz_task/src/models/post/post/post.dart';
+import 'package:ninjaz_task/src/models/post.dart';
 
 import 'posts_test.mocks.dart';
 

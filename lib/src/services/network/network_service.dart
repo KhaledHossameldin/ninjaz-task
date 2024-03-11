@@ -1,4 +1,4 @@
-import '../../models/post/post/post.dart';
+import '../../models/post.dart';
 import 'handlers.dart';
 
 class NetworkService {

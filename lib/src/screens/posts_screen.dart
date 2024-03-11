@@ -6,8 +6,8 @@ import 'package:timeago/timeago.dart' as timeago;
 
 import '../cubits/base_state.dart';
 import '../cubits/posts_cubit.dart';
-import '../models/post/owner/owner.dart';
-import '../models/post/post/post.dart';
+import '../models/owner.dart';
+import '../models/post.dart';
 import '../themes/extensions.dart';
 import '../widgets/reload_widget.dart';
 
