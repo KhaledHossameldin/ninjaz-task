@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../utils/pagination.dart';
-import '../models/post.dart';
+import '../models/post/post.dart';
 import '../services/network/network_service.dart';
 import 'base_state.dart';
 

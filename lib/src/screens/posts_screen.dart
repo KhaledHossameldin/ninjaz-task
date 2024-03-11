@@ -6,8 +6,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 import '../cubits/base_state.dart';
 import '../cubits/posts_cubit.dart';
-import '../models/owner.dart';
-import '../models/post.dart';
+import '../models/post/post.dart';
 import '../themes/extensions.dart';
 import '../widgets/reload_widget.dart';
 
@@ -62,7 +61,7 @@ class _PostsScreenState extends State<PostsScreen> {
                     ),
                     child: Column(children: [
                       _OwnerWidget(
-                        owner: item.owner,
+                        owner: item.owner!,
                         publishDate: item.publishDate,
                       ),
                       Row(children: [

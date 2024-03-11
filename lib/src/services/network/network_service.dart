@@ -1,4 +1,4 @@
-import '../../models/post.dart';
+import '../../models/post/post.dart';
 import 'handlers.dart';
 
 class NetworkService {
@@ -9,6 +9,6 @@ class NetworkService {
       'page': '$page',
       'limit': '$limit',
     });
-    return response['data'].map<Post>((e) => Post.fromJson(e)).toList();
+    return response['data'].map<Post>((e) => PostJ.fromJson(e)).toList();
   }
 }
