@@ -1,7 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'package:ninjaz_task/routes/app_router.dart';
-import 'package:ninjaz_task/routes/routes.dart';
-import 'package:ninjaz_task/src/themes/app_theme.dart';
+
+import '../../routes/app_router.dart';
+import '../../routes/routes.dart';
+import '../cubits/posts_cubit.dart';
+import 'network/network_service.dart';
+import '../themes/app_theme.dart';
 
 class ServiceLocator {
   const ServiceLocator._();
@@ -12,5 +15,7 @@ class ServiceLocator {
     _getIt.registerSingleton<AppTheme>(AppTheme());
     _getIt.registerSingleton<Routes>(Routes());
     _getIt.registerSingleton<AppRouter>(AppRouter());
+    _getIt.registerSingleton<NetworkService>(NetworkService());
+    _getIt.registerSingleton<PostsCubit>(PostsCubit());
   }
 }
