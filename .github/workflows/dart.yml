@@ -43,13 +43,14 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: "khaled.hossameldin99@gmail.com"
+          username: khaled.hossameldin99@gmail.com, karim@ninjaz.ae
           password: "qbdycwojfxclixej"
           from: "Khaled Hossameldin"
           subject: "Flutter Build Complete"
           to: "khaled-hossam@outlook.com"
           body: |
             This is a mail made regarding Ninjaz Interview Task sent from Khaled Hossameldin
+
             I am sending this email from my gmail account because my outlook account faced some issues and for some security issues.
 
             Flutter Build Complete

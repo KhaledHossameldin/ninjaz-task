@@ -49,11 +49,32 @@ class _PostsScreenState extends State<PostsScreen> {
         if (state is SuccessState<List<PostEntity>>) {
           return RefreshIndicator(
             onRefresh: () => _getPostsCubit.fetch(),
-            child: PagedListView<int, PostEntity>(
-              padding: EdgeInsets.symmetric(horizontal: 16.width),
-              pagingController: _getPostsCubit.controller,
-              builderDelegate: PagedChildBuilderDelegate(
-                itemBuilder: (context, item, index) => PostItem(post: item),
+            child: SafeArea(
+              child: OrientationBuilder(
+                builder: (context, orientation) {
+                  if (orientation == Orientation.landscape) {
+                    return PagedGridView<int, PostEntity>(
+                      pagingController: _getPostsCubit.controller,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      ),
+                      builderDelegate: PagedChildBuilderDelegate(
+                        itemBuilder: (context, item, index) => PostItem(
+                          post: item,
+                        ),
+                      ),
+                    );
+                  }
+                  return PagedListView<int, PostEntity>(
+                    padding: EdgeInsets.symmetric(horizontal: 16.width),
+                    pagingController: _getPostsCubit.controller,
+                    builderDelegate: PagedChildBuilderDelegate(
+                      itemBuilder: (context, item, index) =>
+                          PostItem(post: item),
+                    ),
+                  );
+                },
               ),
             ),
           );
