@@ -48,4 +48,17 @@ jobs:
           from: "Khaled Hossameldin"
           subject: "Flutter Build Complete"
           to: "khaled-hossam@outlook.com"
-          body: "The Flutter build is complete for release."
+          body: |
+            This is a mail made for Ninjaz Interview Task sent from Khaled Hossameldin
+            Flutter Build Complete
+
+            The build release ${{ github.ref }}
+
+            **App Name** Ninjaz Task
+            **Build Status** 1.0.0
+            **Build Version** 1
+
+            Thank you for your time.
+
+            Kindly Regards
+            Khaled
