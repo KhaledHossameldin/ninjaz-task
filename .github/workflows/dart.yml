@@ -43,9 +43,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          username: "khaled.hossameldin99@gmail.com"
+          password: "qbdycwojfxclixej"
           from: "Khaled Hossameldin"
           subject: "Flutter Build Complete"
           to: "khaled-hossam@outlook.com"
-          body: "The Flutter build is complete for release ${{ github.event.release.tag_name }}."
+          body: "The Flutter build is complete for release."
