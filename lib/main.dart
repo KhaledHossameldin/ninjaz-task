@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
+import 'core/service_locator.dart';
+import 'core/themes/app_theme.dart';
 import 'routes/app_router.dart';
-import 'src/services/service_locator.dart';
-import 'src/themes/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

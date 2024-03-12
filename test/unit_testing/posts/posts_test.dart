@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:ninjaz_task/src/models/post/post.dart';
+import 'package:ninjaz_task/posts/data/models/post/post.dart';
 
 import 'posts_test.mocks.dart';
 
@@ -24,7 +24,7 @@ void main() async {
         ),
       );
       final list = json.decode(response.body)['data'] as List;
-      return list.map((item) => PostJ.fromJson(item)).toList();
+      return list.map((item) => Post.fromJson(item)).toList();
     } catch (e) {
       throw 'message';
     }

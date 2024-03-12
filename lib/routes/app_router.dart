@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
+import '../home_screen.dart';
+import '../posts/presentation/pages/posts_screen.dart';
 import 'routes.dart';
-import '../src/screens/home_screen.dart';
-import '../src/screens/posts_screen.dart';
 
 class AppRouter {
   final _routes = GetIt.instance.get<Routes>();
