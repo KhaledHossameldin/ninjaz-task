@@ -43,11 +43,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 587
-          username: khaled.hossameldin99@gmail.com, karim@ninjaz.ae
+          username: "khaled.hossameldin99@gmail.com"
           password: "qbdycwojfxclixej"
           from: "Khaled Hossameldin"
           subject: "Flutter Build Complete"
-          to: "khaled-hossam@outlook.com"
+          to: khaled-hossam@outlook.com, karim@ninjaz.ae
           body: |
             This is a mail made regarding Ninjaz Interview Task sent from Khaled Hossameldin
 
