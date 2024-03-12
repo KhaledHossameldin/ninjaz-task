@@ -1,20 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post.dart';
+part of 'post_entity.dart';
 
 // **************************************************************************
 // RealmObjectGenerator
 // **************************************************************************
 
 // ignore_for_file: type=lint
-class Post extends _Post with RealmEntity, RealmObjectBase, RealmObject {
-  Post(
+class PostEntity extends _PostEntity
+    with RealmEntity, RealmObjectBase, RealmObject {
+  PostEntity(
     String id,
     String image,
     int likes,
     String text,
     DateTime publishDate, {
-    Owner? owner,
+    OwnerEntity? owner,
     Iterable<String> tags = const [],
   }) {
     RealmObjectBase.set(this, 'id', id);
@@ -27,7 +28,7 @@ class Post extends _Post with RealmEntity, RealmObjectBase, RealmObject {
         this, 'tags', RealmList<String>(tags));
   }
 
-  Post._();
+  PostEntity._();
 
   @override
   String get id => RealmObjectBase.get<String>(this, 'id') as String;
@@ -64,23 +65,25 @@ class Post extends _Post with RealmEntity, RealmObjectBase, RealmObject {
       RealmObjectBase.set(this, 'publishDate', value);
 
   @override
-  Owner? get owner => RealmObjectBase.get<Owner>(this, 'owner') as Owner?;
+  OwnerEntity? get owner =>
+      RealmObjectBase.get<OwnerEntity>(this, 'owner') as OwnerEntity?;
   @override
-  set owner(covariant Owner? value) =>
+  set owner(covariant OwnerEntity? value) =>
       RealmObjectBase.set(this, 'owner', value);
 
   @override
-  Stream<RealmObjectChanges<Post>> get changes =>
-      RealmObjectBase.getChanges<Post>(this);
+  Stream<RealmObjectChanges<PostEntity>> get changes =>
+      RealmObjectBase.getChanges<PostEntity>(this);
 
   @override
-  Post freeze() => RealmObjectBase.freezeObject<Post>(this);
+  PostEntity freeze() => RealmObjectBase.freezeObject<PostEntity>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObjectBase.registerFactory(Post._);
-    return const SchemaObject(ObjectType.realmObject, Post, 'Post', [
+    RealmObjectBase.registerFactory(PostEntity._);
+    return const SchemaObject(
+        ObjectType.realmObject, PostEntity, 'PostEntity', [
       SchemaProperty('id', RealmPropertyType.string, primaryKey: true),
       SchemaProperty('image', RealmPropertyType.string),
       SchemaProperty('likes', RealmPropertyType.int),
@@ -89,13 +92,14 @@ class Post extends _Post with RealmEntity, RealmObjectBase, RealmObject {
       SchemaProperty('text', RealmPropertyType.string),
       SchemaProperty('publishDate', RealmPropertyType.timestamp),
       SchemaProperty('owner', RealmPropertyType.object,
-          optional: true, linkTarget: 'Owner'),
+          optional: true, linkTarget: 'OwnerEntity'),
     ]);
   }
 }
 
-class Owner extends _Owner with RealmEntity, RealmObjectBase, RealmObject {
-  Owner(
+class OwnerEntity extends _OwnerEntity
+    with RealmEntity, RealmObjectBase, RealmObject {
+  OwnerEntity(
     String id,
     String title,
     String firstName,
@@ -109,7 +113,7 @@ class Owner extends _Owner with RealmEntity, RealmObjectBase, RealmObject {
     RealmObjectBase.set(this, 'picture', picture);
   }
 
-  Owner._();
+  OwnerEntity._();
 
   @override
   String get id => RealmObjectBase.get<String>(this, 'id') as String;
@@ -139,17 +143,18 @@ class Owner extends _Owner with RealmEntity, RealmObjectBase, RealmObject {
   set picture(String value) => RealmObjectBase.set(this, 'picture', value);
 
   @override
-  Stream<RealmObjectChanges<Owner>> get changes =>
-      RealmObjectBase.getChanges<Owner>(this);
+  Stream<RealmObjectChanges<OwnerEntity>> get changes =>
+      RealmObjectBase.getChanges<OwnerEntity>(this);
 
   @override
-  Owner freeze() => RealmObjectBase.freezeObject<Owner>(this);
+  OwnerEntity freeze() => RealmObjectBase.freezeObject<OwnerEntity>(this);
 
   static SchemaObject get schema => _schema ??= _initSchema();
   static SchemaObject? _schema;
   static SchemaObject _initSchema() {
-    RealmObjectBase.registerFactory(Owner._);
-    return const SchemaObject(ObjectType.realmObject, Owner, 'Owner', [
+    RealmObjectBase.registerFactory(OwnerEntity._);
+    return const SchemaObject(
+        ObjectType.realmObject, OwnerEntity, 'OwnerEntity', [
       SchemaProperty('id', RealmPropertyType.string),
       SchemaProperty('title', RealmPropertyType.string),
       SchemaProperty('firstName', RealmPropertyType.string),
